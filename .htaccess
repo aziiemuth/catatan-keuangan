@@ -1,0 +1,16 @@
+# Matatkan directory listing agar hacker tidak mengintip isi folder (seperti /bukti/)
+Options -Indexes
+
+# Matikan error display di production agar tidak membocorkan path server & struktur database
+php_flag display_errors off
+php_flag display_startup_errors off
+
+# Proteksi file penting agar tidak bisa diakses langsung lewat browser
+<FilesMatch "^\.|\.(sql|bak|config|ini|log|sh|inc)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Mencegah eksekusi script PHP di dalam folder /bukti/ secara paksa
+# Namun karena .htaccess tidak selalu support per-folder di shared host dari root, 
+# Cara terbaik adalah membuat .htaccess sendiri di dalam folder /bukti/

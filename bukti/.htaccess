@@ -1,0 +1,10 @@
+# Disable script execution for security
+RemoveHandler .php .phtml .php3
+RemoveType .php .phtml .php3
+php_flag engine off
+
+# Force images and pdfs to not be executed
+<FilesMatch "\.(php|phtml|php3|php4|php5|pl|py|jsp|asp|htm|shtml|sh|cgi)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
