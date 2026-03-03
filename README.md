@@ -53,7 +53,7 @@ $koneksi = mysqli_connect("localhost", "root", "password_database_anda", "catata
 Anda dapat masuk ke dalam dashboard utama menggunakan kredensial default bawaan database:
 
 - **Username:** `admin`
-- **Password:** `admin123` _(Atau tergantung seeder sebelumnya. Anda bisa meresetnya via `reset_password.php` jika diperlukan)_
+- **Password:** `admin` _(Atau tergantung seeder sebelumnya. Anda bisa meresetnya via `reset_password.php` jika diperlukan)_
 
 ---
 
