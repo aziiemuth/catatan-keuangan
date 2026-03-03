@@ -6,6 +6,10 @@ if (!isset($_SESSION['user'])) {
     die("Akses ditolak: Anda harus login.");
 }
 
+if ($_SESSION['user']['role'] !== 'admin') {
+    die("Akses ditolak: Fitur ini hanya untuk Admin.");
+}
+
 $where = array();
 
 if (!empty($_GET['tgl1']) && !empty($_GET['tgl2'])) {

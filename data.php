@@ -177,13 +177,22 @@ $query_string = http_build_query($query_params);
                 <a href="data.php" class="btn btn-secondary"><i class="fas fa-rotate-left"></i> Reset</a>
             </div>
             <div class="filter-actions">
-                <a href="export_transaksi_filter.php?<?php echo http_build_query($_GET); ?>"
-                    class="btn btn-success btn-sm">
-                    <i class="fas fa-file-csv"></i> Export CSV (Filter)
-                </a>
-                <a href="export_transaksi_all.php" class="btn btn-outline-success btn-sm">
-                    <i class="fas fa-file-csv"></i> Export Semua
-                </a>
+                <?php if ($user['role'] == 'admin'): ?>
+                    <a href="print_transaksi.php?<?php echo http_build_query($_GET); ?>" class="btn btn-danger btn-sm"
+                        target="_blank">
+                        <i class="fas fa-file-pdf"></i> Print PDF (Filter)
+                    </a>
+                    <a href="print_transaksi.php" class="btn btn-outline-danger btn-sm" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Print Semua
+                    </a>
+                    <a href="export_transaksi_filter.php?<?php echo http_build_query($_GET); ?>"
+                        class="btn btn-success btn-sm">
+                        <i class="fas fa-file-excel"></i> Export Excel (Filter)
+                    </a>
+                    <a href="export_transaksi_all.php" class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-file-excel"></i> Export Semua
+                    </a>
+                <?php endif; ?>
                 <a href="input.php" class="btn btn-primary btn-sm">
                     <i class="fas fa-plus"></i> Input Transaksi
                 </a>
@@ -246,13 +255,13 @@ $query_string = http_build_query($query_params);
                                 </td>
                                 <?php if ($user['role'] == 'admin'): ?>
                                     <td style="white-space:nowrap;">
-                                    <a href="edit.php?id=<?php echo $d['id']; ?>" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <button onclick="confirmDelete('hapus.php?id=<?php echo $d['id']; ?>')"
-                                        class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
+                                        <a href="edit.php?id=<?php echo $d['id']; ?>" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <button onclick="confirmDelete('hapus.php?id=<?php echo $d['id']; ?>')"
+                                            class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
                                     </td>
                                 <?php endif; ?>
                             </tr>

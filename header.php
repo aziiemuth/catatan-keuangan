@@ -99,15 +99,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     data-page="jenis.php">
                     <i class="fas fa-tags"></i> Jenis Transaksi
                 </a>
-            <?php endif; ?>
 
-            <a href="rekap_bulanan.php"
-                class="nav-link <?php echo $current_page == 'rekap_bulanan.php' ? 'active' : ''; ?>"
-                data-page="rekap_bulanan.php">
-                <i class="fas fa-calendar-alt"></i> Rekap Bulanan
-            </a>
+                <a href="rekap_bulanan.php"
+                    class="nav-link <?php echo $current_page == 'rekap_bulanan.php' ? 'active' : ''; ?>"
+                    data-page="rekap_bulanan.php">
+                    <i class="fas fa-calendar-alt"></i> Rekap Bulanan
+                </a>
 
-            <?php if ($user['role'] == 'admin'): ?>
                 <div class="nav-section">Admin</div>
 
                 <a href="users.php" class="nav-link <?php echo $current_page == 'users.php' ? 'active' : ''; ?>"

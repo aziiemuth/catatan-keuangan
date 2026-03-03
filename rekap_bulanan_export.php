@@ -6,6 +6,10 @@ if (!isset($_SESSION['user'])) {
     die("Akses ditolak: Anda harus login.");
 }
 
+if ($_SESSION['user']['role'] !== 'admin') {
+    die("Akses ditolak: Fitur ini hanya untuk Admin.");
+}
+
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename=rekap_bulanan.csv");
 

@@ -2,6 +2,12 @@
 include "koneksi.php";
 include "header.php";
 
+if ($user['role'] !== 'admin') {
+    $_SESSION['flash'] = ['type' => 'error', 'message' => 'Akses ditolak. Fitur ini hanya untuk Admin.'];
+    echo "<script>window.location.href='index.php';</script>";
+    exit;
+}
+
 // Search
 $search_year = isset($_GET['year']) ? (int) $_GET['year'] : 0;
 $search_month = isset($_GET['month']) ? (int) $_GET['month'] : 0;
@@ -119,11 +125,15 @@ $query_string = http_build_query($query_params);
                     <?php endfor; ?>
                 </select>
             </div>
-            <div class="col-md-4 d-flex align-items-end gap-2">
+            <div class="col-md-5 d-flex align-items-end gap-2">
                 <button class="btn btn-primary"><i class="fas fa-search"></i> Cari</button>
                 <a href="rekap_bulanan.php" class="btn btn-secondary"><i class="fas fa-rotate-left"></i> Reset</a>
+                <a href="print_rekap.php?<?php echo http_build_query($_GET); ?>" class="btn btn-danger btn-sm"
+                    target="_blank">
+                    <i class="fas fa-file-pdf"></i> Print PDF
+                </a>
                 <a href="rekap_bulanan_export.php" class="btn btn-success btn-sm">
-                    <i class="fas fa-file-csv"></i> Export CSV
+                    <i class="fas fa-file-excel"></i> Export Excel
                 </a>
             </div>
         </div>
